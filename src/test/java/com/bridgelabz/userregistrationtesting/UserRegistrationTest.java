@@ -69,5 +69,13 @@ public class UserRegistrationTest {
 		Assert.assertTrue(result);
 		
 	}
+	@Test
+	public void givenEmail_WhenInValid_ShouldReturnFalse() {
+			
+		UserRegistration validator = new UserRegistration();
+		boolean result=validator.validateEmail("chrisyahoo.com");
+		Assert.assertTrue(result);
+		
+	}
 
 }
