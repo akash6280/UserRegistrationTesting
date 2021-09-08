@@ -48,17 +48,25 @@ public class UserRegistrationTest {
 	@Test
 	public void givenPhoneNumber_WhenValid_ShouldReturnTrue() {
 			
-		UserRegistration userValidator = new UserRegistration();
-		boolean isValid=userValidator.validatePhoneNumber("91 9067878967");
-		Assert.assertTrue(isValid);
+		UserRegistration validator = new UserRegistration();
+		boolean result=validator.validatePhoneNumber("91 9067878967");
+		Assert.assertTrue(result);
 		
 	}
 	@Test
-	public void givenPhoneNumber_WhenInValid_ShouldReturnTrue() {
+	public void givenPhoneNumber_WhenInValid_ShouldReturnFalse() {
 		
-		UserRegistration userValidator = new UserRegistration();
-		boolean isValid=userValidator.validatePhoneNumber("8689");
-		Assert.assertTrue(isValid);
+		UserRegistration validator = new UserRegistration();
+		boolean result=validator.validatePhoneNumber("1245678588");
+		Assert.assertTrue(result);
+		
+	}
+	@Test
+	public void givenEmail_WhenValid_ShouldReturnTrue() {
+			
+		UserRegistration validator = new UserRegistration();
+		boolean result=validator.validateEmail("chris@yahoo.com");
+		Assert.assertTrue(result);
 		
 	}
 

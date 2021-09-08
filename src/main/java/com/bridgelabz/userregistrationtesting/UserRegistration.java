@@ -20,7 +20,7 @@ public class UserRegistration {
 	}
 	
 	public static boolean validatePhoneNumber(String phoneNumber) {
-		return  Pattern.matches("^[0-9]{2}[ ][1-9][0-9]{9}$", phoneNumber);
+		return  Pattern.matches("^[0-9]{2}[ ][1-9][0-9]{9}", phoneNumber);
 	}
 	public static boolean validatePassword(String password) {
 		return Pattern.matches("(?=.*?[A-Z])(?=.*?[0-9])(?=.*[#?!@$%^&*-]).{8,}$", password);
