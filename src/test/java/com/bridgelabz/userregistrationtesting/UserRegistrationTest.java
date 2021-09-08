@@ -53,5 +53,13 @@ public class UserRegistrationTest {
 		Assert.assertTrue(isValid);
 		
 	}
+	@Test
+	public void givenPhoneNumber_WhenInValid_ShouldReturnTrue() {
+		
+		UserRegistration userValidator = new UserRegistration();
+		boolean isValid=userValidator.validatePhoneNumber("8689");
+		Assert.assertTrue(isValid);
+		
+	}
 
 }
