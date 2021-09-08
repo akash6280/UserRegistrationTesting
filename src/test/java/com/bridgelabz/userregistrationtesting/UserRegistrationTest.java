@@ -32,5 +32,11 @@ public class UserRegistrationTest {
 		boolean result = validator.validatetName("Singh");
 		Assert.assertTrue(result);
 	}
+	@Test
+	public void givenLastName_WhenUpperCaseMissing_ShouldReturnFalse() {
+		UserRegistration validator = new UserRegistration();	
+		boolean result = validator.validatetName("lenovo");
+		Assert.assertFalse(result);
+	}
 	
 }
