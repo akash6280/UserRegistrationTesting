@@ -35,8 +35,13 @@ public class UserRegistrationTest {
 	@Test
 	public void givenLastName_WhenUpperCaseMissing_ShouldReturnFalse() {
 		UserRegistration validator = new UserRegistration();	
-		boolean result = validator.validatetName("lenovo");
+		boolean result = validator.validatetName("dell");
 		Assert.assertFalse(result);
 	}
-	
+	@Test
+	public void givenLastName_WhenShort_ShouldReturnFalse() {
+		UserRegistration validator = new UserRegistration();	
+		boolean result = validator.validatetName("sa");
+		Assert.assertFalse(result);
+	}
 }
