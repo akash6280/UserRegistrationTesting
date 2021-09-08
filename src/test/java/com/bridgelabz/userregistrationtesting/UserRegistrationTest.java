@@ -44,4 +44,14 @@ public class UserRegistrationTest {
 		boolean result = validator.validatetName("sa");
 		Assert.assertFalse(result);
 	}
+	
+	@Test
+	public void givenPhoneNumber_WhenValid_ShouldReturnTrue() {
+			
+		UserRegistration userValidator = new UserRegistration();
+		boolean isValid=userValidator.validatePhoneNumber("91 9067878967");
+		Assert.assertTrue(isValid);
+		
+	}
+
 }
