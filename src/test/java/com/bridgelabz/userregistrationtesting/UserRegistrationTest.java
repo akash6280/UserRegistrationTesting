@@ -85,6 +85,14 @@ public class UserRegistrationTest {
 		boolean result=UserRegistration.validatePassword("Abcd@123");
 		Assert.assertTrue(result);
 	}
+	@Test
+	public void givenPassword_WhenShort_ShouldReturnFalse() 
+	{
+			
+		UserRegistration Validator = new UserRegistration();
+		boolean result=UserRegistration.validatePassword("Abcd");
+		Assert.assertFalse(result);
+	}
 	
 
 }
