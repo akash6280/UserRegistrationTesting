@@ -58,7 +58,7 @@ public class UserRegistrationTest {
 		
 		UserRegistration validator = new UserRegistration();
 		boolean result=validator.validatePhoneNumber("1245678588");
-		Assert.assertTrue(result);
+		Assert.assertFalse(result);
 		
 	}
 	@Test
@@ -73,9 +73,18 @@ public class UserRegistrationTest {
 	public void givenEmail_WhenInValid_ShouldReturnFalse() {
 			
 		UserRegistration validator = new UserRegistration();
-		boolean result=validator.validateEmail("chrisyahoo.com");
-		Assert.assertTrue(result);
+		boolean result=validator.validateEmail("chris..@yahoo.com");
+		Assert.assertFalse(result);
 		
 	}
+	@Test
+	public void givenPassword_WhenValid_ShouldReturnTrue() 
+	{
+			
+		UserRegistration Validator = new UserRegistration();
+		boolean result=UserRegistration.validatePassword("Abcd@123");
+		Assert.assertTrue(result);
+	}
+	
 
 }
