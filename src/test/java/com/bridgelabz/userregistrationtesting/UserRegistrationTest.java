@@ -101,5 +101,13 @@ public class UserRegistrationTest {
 		boolean result=UserRegistration.validatePassword("abcd");
 		Assert.assertFalse(result);
 	}
+	@Test
+	public void givenPassword_WhenNoLowerCase_ShouldReturnFalse() 
+	{
+			
+		UserRegistration Validator = new UserRegistration();
+		boolean result=UserRegistration.validatePassword("AAAAAAAA");
+		Assert.assertFalse(result);
+	}
 
 }
