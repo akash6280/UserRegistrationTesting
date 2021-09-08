@@ -20,5 +20,10 @@ public class UserRegistrationTest {
 		boolean result = validator.validatetName("lenovo");
 		Assert.assertFalse(result);
 	}
-		
+	@Test
+	public void givenFirstName_WhenShort_ShouldReturnFalse() {
+		UserRegistration validator = new UserRegistration();	
+		boolean result = validator.validatetName("a");
+		Assert.assertFalse(result);
+	}
 }
