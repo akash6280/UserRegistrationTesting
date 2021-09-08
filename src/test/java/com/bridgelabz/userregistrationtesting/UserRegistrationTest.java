@@ -109,5 +109,13 @@ public class UserRegistrationTest {
 		boolean result=UserRegistration.validatePassword("AAAAAAAA");
 		Assert.assertFalse(result);
 	}
+	@Test
+	public void givenPassword_WhenNoSpecialCharacter_ShouldReturnFalse() 
+	{
+			
+		UserRegistration Validator = new UserRegistration();
+		boolean result=UserRegistration.validatePassword("Ababa123");
+		Assert.assertFalse(result);
+	}
 
 }
