@@ -10,8 +10,15 @@ public class UserRegistrationTest {
 	@Test
 	public void givenFirstName_WhenProper_ShouldReturnTrue() {
 		UserRegistration validator = new UserRegistration();	
-		boolean result = UserRegistration.validatetName("Akash");
+		boolean result = validator.validatetName("Akash");
 		Assert.assertTrue(result);
+	}
+	
+	@Test
+	public void givenFirstName_WhenUpperCaseMissing_ShouldReturnFalse() {
+		UserRegistration validator = new UserRegistration();	
+		boolean result = validator.validatetName("lenovo");
+		Assert.assertFalse(result);
 	}
 		
 }
