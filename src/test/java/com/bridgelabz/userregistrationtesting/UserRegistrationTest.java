@@ -26,4 +26,11 @@ public class UserRegistrationTest {
 		boolean result = validator.validatetName("a");
 		Assert.assertFalse(result);
 	}
+	@Test
+	public void givenLastName_WhenProper_ShouldReturnTrue() {
+		UserRegistration validator = new UserRegistration();	
+		boolean result = validator.validatetName("Singh");
+		Assert.assertTrue(result);
+	}
+	
 }
