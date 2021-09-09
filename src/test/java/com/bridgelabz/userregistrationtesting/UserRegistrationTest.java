@@ -1,12 +1,23 @@
 package com.bridgelabz.userregistrationtesting;
 import org.junit.Test;
-
-import com.bridgelabz.userregistrationtesting.UserRegistration;
-
+import static  org.junit.Assert.assertEquals;
+import java.util.Arrays;
+import java.util.Collection;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.junit.Assert;
 
-
+@RunWith(Parameterized.class)
 public class UserRegistrationTest {
+	 String email;
+	 boolean expectedOutput;
+
+	public UserRegistrationTest(String email, boolean expectedOutput) {
+		this.email = email;
+		this.expectedOutput = expectedOutput;
+	}
+	
+	
 	@Test
 	public void givenFirstName_WhenProper_ShouldReturnTrue() {
 		UserRegistration validator = new UserRegistration();	
@@ -117,5 +128,21 @@ public class UserRegistrationTest {
 		boolean result=UserRegistration.validatePassword("Ababa123");
 		Assert.assertFalse(result);
 	}
+	@Test
+	public void givenEmailAsVariable_ShouldReturnAsPerTheParameteriszedResult() 
+	{
+		UserRegistration Validator = new UserRegistration();
+		boolean result=Validator.validateEmail(email);
+		Assert.assertEquals(result,expectedOutput);
+	}
+	@Parameterized.Parameters
+	public static Collection input() {
+		return Arrays.asList(new Object[][] { { "abc@yahoo.com",true }, { "abc-100@yahoo.com",true }, { "abc.100@yahoo.com",true },
+					{ "abc111@abc.com",true }, { "abc-100@abc.net",true }, { "abc.100@abc.com.au",true }, { "abc@1.com",true },
+					{ "abc@gmail.com.com",true }, { "abc+100@gmail.com",true }, { "abc",false }, { "abc@.com.my",false }, { "abc123@gmail.a",false },
+					{ "abc123@.com",false }, { "abc123@.com.com",false }, { ".abc@abc.com",false }, { "abc()*@gmail.com",false }, { "abc@%*.com",false },
+					{ "abc..2002@gmail.com",false }, { "abc.@gmail.com",false }, { "abcabc@gmail.com",true }, { "abc@gmail.com.1a",false },
+					{ "abc@gmail.com.aa.au",false } });
+		}
 
 }

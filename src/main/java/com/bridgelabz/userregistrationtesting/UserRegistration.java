@@ -16,7 +16,7 @@ public class UserRegistration {
 	}
 	
 	public static boolean validateEmail(String emailId) {
-		return Pattern.matches("^[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]([+-_.][a-zA-Z]*)?@[a-zA-Z0-9]*[.][a-z]{2,4}([.][a-zA-z]{2})?$", emailId);
+		return Pattern.matches("^[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]([+-_.][a-zA-Z0-9]+)?[@]{1}[a-zA-Z0-9]+[.][a-z]{2,4}([.][a-zA-z]{2,3})?$", emailId);
 	}
 	
 	public static boolean validatePhoneNumber(String phoneNumber) {
