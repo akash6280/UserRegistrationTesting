@@ -31,6 +31,12 @@ public class UserRegistrationTest {
 	}
 	
 	@Test
+	public void givenFirstName_WhenContainSpecialNumber_ShouldReturnFalse() {
+		UserRegistration validator = new UserRegistration();	
+		boolean result = validator.validatetName("len1ovo");
+		Assert.assertFalse(result);
+	}
+	@Test
 	public void givenFirstName_WhenShort_ShouldReturnFalse() {
 		UserRegistration validator = new UserRegistration();	
 		boolean result = validator.validatetName("a");
