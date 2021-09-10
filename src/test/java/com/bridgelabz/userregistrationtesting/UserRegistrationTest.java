@@ -79,6 +79,13 @@ public class UserRegistrationTest {
 	}
 	
 	@Test
+	public void givenPhoneNumber_WhenContainSpecialCharacter_ShouldReturnFalse() {
+		UserRegistration validator = new UserRegistration();
+		boolean result=validator.validatePhoneNumber("12456@78588");
+		Assert.assertFalse(result);
+	}
+	
+	@Test
 	public void givenEmail_WhenValid_ShouldReturnTrue() {	
 		UserRegistration validator = new UserRegistration();
 		boolean result=validator.validateEmail("chris@yahoo.com");
