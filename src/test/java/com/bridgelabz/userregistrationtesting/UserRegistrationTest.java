@@ -86,6 +86,13 @@ public class UserRegistrationTest {
 	}
 	
 	@Test
+	public void givenPhoneNumber_WhenShort_ShouldReturnFalse() {
+		UserRegistration validator = new UserRegistration();
+		boolean result=validator.validatePhoneNumber("91 123456789");
+		Assert.assertFalse(result);
+	}
+	
+	@Test
 	public void givenEmail_WhenValid_ShouldReturnTrue() {	
 		UserRegistration validator = new UserRegistration();
 		boolean result=validator.validateEmail("chris@yahoo.com");
