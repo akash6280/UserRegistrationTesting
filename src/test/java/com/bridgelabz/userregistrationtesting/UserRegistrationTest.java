@@ -107,6 +107,14 @@ public class UserRegistrationTest {
 	}
 	
 	@Test
+	public void givenEmail_WhenStartWithSpecialCharacter_ShouldReturnFalse() {	
+		UserRegistration validator = new UserRegistration();
+		boolean result=validator.validateEmail("@chris@yahoo.com");
+		Assert.assertFalse(result);
+	}
+	
+	
+	@Test
 	public void givenPassword_WhenValid_ShouldReturnTrue() {	
 		UserRegistration Validator = new UserRegistration();
 		boolean result=UserRegistration.validatePassword("Abcd@123");
