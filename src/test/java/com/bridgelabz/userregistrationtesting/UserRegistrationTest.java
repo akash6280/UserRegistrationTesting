@@ -113,6 +113,12 @@ public class UserRegistrationTest {
 		Assert.assertFalse(result);
 	}
 	
+	@Test
+	public void givenEmail_WhenStartWithNumber_ShouldReturnFalse() {	
+		UserRegistration validator = new UserRegistration();
+		boolean result=validator.validateEmail("1chris@yahoo.com");
+		Assert.assertFalse(result);
+	}
 	
 	@Test
 	public void givenPassword_WhenValid_ShouldReturnTrue() {	
