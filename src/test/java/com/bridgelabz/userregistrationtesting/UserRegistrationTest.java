@@ -206,7 +206,7 @@ public class UserRegistrationTest {
 	public void givenPhoneNumber_WhenEmpty_ShouldThrowException() throws UserRegistrationException {
 		UserRegistration validator = new UserRegistration();	
 		try {
-			validator.validatetName("");
+			validator.validatePhoneNumber("");
 		}
 		catch(UserRegistrationException e) {
 			Assert.assertEquals(UserRegistrationException.ExceptionType.ENTERED_EMPTY, e.type);
@@ -216,7 +216,17 @@ public class UserRegistrationTest {
 	public void givenPhoneNumber_WhenNull_ShouldThrowException() throws UserRegistrationException {
 		UserRegistration validator = new UserRegistration();	
 		try {
-			validator.validatetName("");
+			validator.validatePhoneNumber(null);
+		}
+		catch(UserRegistrationException e) {
+			Assert.assertEquals(UserRegistrationException.ExceptionType.ENTERED_NULL, e.type);
+		}
+	}
+	@Test
+	public void givenEmailId_WhenNull_ShouldThrowException() throws UserRegistrationException {
+		UserRegistration validator = new UserRegistration();	
+		try {
+			validator.validateEmail(null);
 		}
 		catch(UserRegistrationException e) {
 			Assert.assertEquals(UserRegistrationException.ExceptionType.ENTERED_NULL, e.type);
