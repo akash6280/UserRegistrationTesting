@@ -10,153 +10,164 @@ import org.junit.Assert;
 public class UserRegistrationTest {
 
 	@Test
-	public void givenFirstName_WhenProper_ShouldReturnTrue() {
+	public void givenFirstName_WhenProper_ShouldReturnTrue() throws UserRegistrationException {
 		UserRegistration validator = new UserRegistration();	
 		boolean result = validator.validatetName("Akash");
 		Assert.assertTrue(result);
 	}
 	
 	@Test
-	public void givenFirstName_WhenUpperCaseMissing_ShouldReturnFalse() {
+	public void givenFirstName_WhenUpperCaseMissing_ShouldReturnFalse() throws UserRegistrationException {
 		UserRegistration validator = new UserRegistration();	
 		boolean result = validator.validatetName("lenovo");
 		Assert.assertFalse(result);
 	}
 	
 	@Test
-	public void givenFirstName_WhenContainSpecialCharacter_ShouldReturnFalse() {
+	public void givenFirstName_WhenContainSpecialCharacter_ShouldReturnFalse() throws UserRegistrationException {
 		UserRegistration validator = new UserRegistration();	
 		boolean result = validator.validatetName("len@ovo");
 		Assert.assertFalse(result);
 	}
 	
 	@Test
-	public void givenFirstName_WhenContainSpecialNumber_ShouldReturnFalse() {
+	public void givenFirstName_WhenContainSpecialNumber_ShouldReturnFalse() throws UserRegistrationException {
 		UserRegistration validator = new UserRegistration();	
 		boolean result = validator.validatetName("len1ovo");
 		Assert.assertFalse(result);
 	}
 	@Test
-	public void givenFirstName_WhenShort_ShouldReturnFalse() {
+	public void givenFirstName_WhenShort_ShouldReturnFalse() throws UserRegistrationException {
 		UserRegistration validator = new UserRegistration();	
 		boolean result = validator.validatetName("a");
 		Assert.assertFalse(result);
 	}
 	
 	@Test
-	public void givenLastName_WhenProper_ShouldReturnTrue() {
+	public void givenLastName_WhenProper_ShouldReturnTrue() throws UserRegistrationException {
 		UserRegistration validator = new UserRegistration();	
 		boolean result = validator.validatetName("Singh");
 		Assert.assertTrue(result);
 	}
 	
 	@Test
-	public void givenLastName_WhenUpperCaseMissing_ShouldReturnFalse() {
+	public void givenLastName_WhenUpperCaseMissing_ShouldReturnFalse() throws UserRegistrationException {
 		UserRegistration validator = new UserRegistration();	
 		boolean result = validator.validatetName("dell");
 		Assert.assertFalse(result);
 	}
 	
 	@Test
-	public void givenLastName_WhenShort_ShouldReturnFalse() {
+	public void givenLastName_WhenShort_ShouldReturnFalse() throws UserRegistrationException {
 		UserRegistration validator = new UserRegistration();	
 		boolean result = validator.validatetName("sa");
 		Assert.assertFalse(result);
 	}
 	
 	@Test
-	public void givenPhoneNumber_WhenValid_ShouldReturnTrue() {	
+	public void givenPhoneNumber_WhenValid_ShouldReturnTrue() throws UserRegistrationException {	
 		UserRegistration validator = new UserRegistration();
 		boolean result=validator.validatePhoneNumber("91 9067878967");
 		Assert.assertTrue(result);	
 	}
 	
 	@Test
-	public void givenPhoneNumber_WhenInValid_ShouldReturnFalse() {
+	public void givenPhoneNumber_WhenInValid_ShouldReturnFalse() throws UserRegistrationException {
 		UserRegistration validator = new UserRegistration();
 		boolean result=validator.validatePhoneNumber("1245678588");
 		Assert.assertFalse(result);
 	}
 	
 	@Test
-	public void givenPhoneNumber_WhenContainSpecialCharacter_ShouldReturnFalse() {
+	public void givenPhoneNumber_WhenContainSpecialCharacter_ShouldReturnFalse() throws UserRegistrationException {
 		UserRegistration validator = new UserRegistration();
 		boolean result=validator.validatePhoneNumber("12456@78588");
 		Assert.assertFalse(result);
 	}
 	
 	@Test
-	public void givenPhoneNumber_WhenShort_ShouldReturnFalse() {
+	public void givenPhoneNumber_WhenShort_ShouldReturnFalse() throws UserRegistrationException {
 		UserRegistration validator = new UserRegistration();
 		boolean result=validator.validatePhoneNumber("91 123456789");
 		Assert.assertFalse(result);
 	}
 	
 	@Test
-	public void givenEmail_WhenValid_ShouldReturnTrue() {	
+	public void givenEmail_WhenValid_ShouldReturnTrue() throws UserRegistrationException {	
 		UserRegistration validator = new UserRegistration();
 		boolean result=validator.validateEmail("chris@yahoo.com");
 		Assert.assertTrue(result);	
 	}
 	
 	@Test
-	public void givenEmail_WhenInValid_ShouldReturnFalse() {	
+	public void givenEmail_WhenInValid_ShouldReturnFalse() throws UserRegistrationException {	
 		UserRegistration validator = new UserRegistration();
 		boolean result=validator.validateEmail("chris..@yahoo.com");
 		Assert.assertFalse(result);
 	}
 	
 	@Test
-	public void givenEmail_WhenStartWithSpecialCharacter_ShouldReturnFalse() {	
+	public void givenEmail_WhenStartWithSpecialCharacter_ShouldReturnFalse() throws UserRegistrationException {	
 		UserRegistration validator = new UserRegistration();
 		boolean result=validator.validateEmail("@chris@yahoo.com");
 		Assert.assertFalse(result);
 	}
 	
 	@Test
-	public void givenEmail_WhenStartWithNumber_ShouldReturnFalse() {	
+	public void givenEmail_WhenStartWithNumber_ShouldReturnFalse() throws UserRegistrationException {	
 		UserRegistration validator = new UserRegistration();
 		boolean result=validator.validateEmail("1chris@yahoo.com");
 		Assert.assertFalse(result);
 	}
 	
 	@Test
-	public void givenPassword_WhenValid_ShouldReturnTrue() {	
-		UserRegistration Validator = new UserRegistration();
-		boolean result=UserRegistration.validatePassword("Abcd@123");
+	public void givenPassword_WhenValid_ShouldReturnTrue() throws UserRegistrationException {	
+		UserRegistration validator = new UserRegistration();
+		boolean result=validator.validatePassword("Abcd@123");
 		Assert.assertTrue(result);
 	}
 	
 	@Test
-	public void givenPassword_WhenShort_ShouldReturnFalse() {
+	public void givenPassword_WhenShort_ShouldReturnFalse() throws UserRegistrationException {
 			
-		UserRegistration Validator = new UserRegistration();
-		boolean result=UserRegistration.validatePassword("Abcd");
+		UserRegistration validator = new UserRegistration();
+		boolean result=validator.validatePassword("Abcd");
 		Assert.assertFalse(result);
 	}
 	
 	@Test
-	public void givenPassword_WhenNoUpperCase_ShouldReturnFalse() {
+	public void givenPassword_WhenNoUpperCase_ShouldReturnFalse() throws UserRegistrationException {
 			
-		UserRegistration Validator = new UserRegistration();
-		boolean result=UserRegistration.validatePassword("abcd");
+		UserRegistration validator = new UserRegistration();
+		boolean result=validator.validatePassword("abcd");
 		Assert.assertFalse(result);
 	}
 	
 	@Test
-	public void givenPassword_WhenNoLowerCase_ShouldReturnFalse(){
+	public void givenPassword_WhenNoLowerCase_ShouldReturnFalse() throws UserRegistrationException{
 			
-		UserRegistration Validator = new UserRegistration();
-		boolean result=UserRegistration.validatePassword("AAAAAAAA");
+		UserRegistration validator = new UserRegistration();
+		boolean result=validator.validatePassword("AAAAAAAA");
 		Assert.assertFalse(result);
 	}
 	
 	@Test
-	public void givenPassword_WhenNoSpecialCharacter_ShouldReturnFalse() {
+	public void givenPassword_WhenNoSpecialCharacter_ShouldReturnFalse() throws UserRegistrationException {
 			
-		UserRegistration Validator = new UserRegistration();
-		boolean result=UserRegistration.validatePassword("Ababa123");
+		UserRegistration validator = new UserRegistration();
+		boolean result=validator.validatePassword("Ababa123");
 		Assert.assertFalse(result);
+	}
+	
+	@Test
+	public void givenFirstName_WhenNull_ShouldThrowException() throws UserRegistrationException {
+		UserRegistration validator = new UserRegistration();	
+		try {
+			validator.validatetName(null);
+		}
+		catch(UserRegistrationException e) {
+			Assert.assertEquals(UserRegistrationException.ExceptionType.ENTERED_NULL, e.type);
+		}
 	}
 	
 	
