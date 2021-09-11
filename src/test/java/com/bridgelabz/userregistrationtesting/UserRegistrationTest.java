@@ -252,6 +252,16 @@ public class UserRegistrationTest {
 			Assert.assertEquals(UserRegistrationException.ExceptionType.ENTERED_EMPTY, e.type);
 		}
 	}
+	@Test
+	public void givenPassword_WhenNull_ShouldThrowException() throws UserRegistrationException {
+		UserRegistration validator = new UserRegistration();	
+		try {
+			validator.validatePassword(null);
+		}
+		catch(UserRegistrationException e) {
+			Assert.assertEquals(UserRegistrationException.ExceptionType.ENTERED_NULL, e.type);
+		}
+	}
 	
 	
 }
