@@ -181,5 +181,16 @@ public class UserRegistrationTest {
 		}
 	}
 	
+	@Test
+	public void givenLasttName_WhenNull_ShouldThrowException() throws UserRegistrationException {
+		UserRegistration validator = new UserRegistration();	
+		try {
+			validator.validatetName(null);
+		}
+		catch(UserRegistrationException e) {
+			Assert.assertEquals(UserRegistrationException.ExceptionType.ENTERED_NULL, e.type);
+		}
+	}
+	
 	
 }
