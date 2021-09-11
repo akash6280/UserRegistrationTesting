@@ -202,5 +202,16 @@ public class UserRegistrationTest {
 		}
 	}
 	
+	@Test
+	public void givenPhoneNumber_WhenEmpty_ShouldThrowException() throws UserRegistrationException {
+		UserRegistration validator = new UserRegistration();	
+		try {
+			validator.validatetName("");
+		}
+		catch(UserRegistrationException e) {
+			Assert.assertEquals(UserRegistrationException.ExceptionType.ENTERED_EMPTY, e.type);
+		}
+	}
+	
 	
 }
