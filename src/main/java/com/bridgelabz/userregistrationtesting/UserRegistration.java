@@ -7,23 +7,53 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
 	
-	public static boolean validatetName(String name) {
-		return Pattern.matches("^[A-Z][A-Za-z]{2,}$",name);
+	public static boolean validatetName(String name) throws UserRegistrationException {
+		
+		try {
+			if(name.length()==0)
+				throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_EMPTY,"Please enter a valid name");
+			return Pattern.matches("^[A-Z][A-Za-z]{2,}$",name);
+
+		} catch (NullPointerException e) {
+			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_NULL,"Null string is entered");
+		}
 	}
 	
-	public static boolean validateLasttName(String lastName) {
-		return Pattern.matches("^[A-Z][A-Za-z]{2,}$", lastName);
+	public static boolean validateEmail(String emailId) throws UserRegistrationException {
+		
+		try {
+			if(emailId.length()==0)
+				throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_EMPTY,"Please enter a valid email id");
+			return Pattern.matches("^[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]([+-_.][a-zA-Z0-9]+)?[@]{1}[a-zA-Z0-9]+[.][a-z]{2,4}([.][a-zA-z]{2,3})?$", emailId);
+
+		} catch (NullPointerException e) {
+			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_NULL,"Null string is entered");
+		}
+		
 	}
 	
-	public static boolean validateEmail(String emailId) {
-		return Pattern.matches("^[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]([+-_.][a-zA-Z0-9]+)?[@]{1}[a-zA-Z0-9]+[.][a-z]{2,4}([.][a-zA-z]{2,3})?$", emailId);
+	public static boolean validatePhoneNumber(String phoneNumber) throws UserRegistrationException {
+		
+		try {
+			if(phoneNumber.length()==0)
+				throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_EMPTY,"Please enter valid phone number");
+			return  Pattern.matches("^[0-9]{2}[ ][1-9][0-9]{9}", phoneNumber);
+
+		} catch (NullPointerException e) {
+			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_NULL,"Null string is entered");
+		}
 	}
 	
-	public static boolean validatePhoneNumber(String phoneNumber) {
-		return  Pattern.matches("^[0-9]{2}[ ][1-9][0-9]{9}", phoneNumber);
-	}
-	public static boolean validatePassword(String password) {
-		return Pattern.matches("(?=.*?[A-Z])(?=.*?[0-9])(?=.*[#?!@$%^&*-]).{8,}$", password);
+	public static boolean validatePassword(String password) throws UserRegistrationException {
+		
+		try {
+			if(password.length()==0)
+				throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_EMPTY,"Please enter a valid password");
+			return Pattern.matches("(?=.*?[A-Z])(?=.*?[0-9])(?=.*[#?!@$%^&*-]).{8,}$", password);
+
+		} catch (NullPointerException e) {
+			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_NULL,"Null string is entered");
+		}
 	}
 
 }
