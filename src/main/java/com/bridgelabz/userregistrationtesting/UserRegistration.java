@@ -5,14 +5,22 @@ package com.bridgelabz.userregistrationtesting;
 
 import java.util.regex.Pattern;
 
+@FunctionalInterface
+interface InputValidation {
+	boolean validate(String regex, String input);
+}
+
+
+
 public class UserRegistration {
-	
+	 static InputValidation validator = (String regex, String input) -> { boolean check= Pattern.matches(regex,input);return check;
+	};
 	public static boolean validatetName(String name) throws UserRegistrationException {
 		
 		try {
 			if(name.length()==0)
 				throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_EMPTY,"Please enter a valid name");
-			return Pattern.matches("^[A-Z][A-Za-z]{2,}$",name);
+			return validator.validate("^[A-Z][A-Za-z]{2,}$", name);
 
 		} catch (NullPointerException e) {
 			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_NULL,"Null string is entered");
@@ -24,7 +32,7 @@ public class UserRegistration {
 		try {
 			if(emailId.length()==0)
 				throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_EMPTY,"Please enter a valid email id");
-			return Pattern.matches("^[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]([+-_.][a-zA-Z0-9]+)?[@]{1}[a-zA-Z0-9]+[.][a-z]{2,4}([.][a-zA-z]{2,3})?$", emailId);
+			return validator.validate("^[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]([+-_.][a-zA-Z0-9]+)?[@]{1}[a-zA-Z0-9]+[.][a-z]{2,4}([.][a-zA-z]{2,3})?$", emailId);
 
 		} catch (NullPointerException e) {
 			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_NULL,"Null string is entered");
@@ -37,7 +45,7 @@ public class UserRegistration {
 		try {
 			if(phoneNumber.length()==0)
 				throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_EMPTY,"Please enter valid phone number");
-			return  Pattern.matches("^[0-9]{2}[ ][1-9][0-9]{9}", phoneNumber);
+			return  validator.validate("^[0-9]{2}[ ][1-9][0-9]{9}", phoneNumber);
 
 		} catch (NullPointerException e) {
 			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_NULL,"Null string is entered");
@@ -49,7 +57,7 @@ public class UserRegistration {
 		try {
 			if(password.length()==0)
 				throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_EMPTY,"Please enter a valid password");
-			return Pattern.matches("(?=.*?[A-Z])(?=.*?[0-9])(?=.*[#?!@$%^&*-]).{8,}$", password);
+			return validator.validate("(?=.*?[A-Z])(?=.*?[0-9])(?=.*[#?!@$%^&*-]).{8,}$", password);
 
 		} catch (NullPointerException e) {
 			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_NULL,"Null string is entered");
